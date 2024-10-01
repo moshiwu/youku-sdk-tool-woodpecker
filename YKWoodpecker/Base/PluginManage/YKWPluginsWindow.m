@@ -191,7 +191,9 @@
             }
         }
     }
-    if (targetWindowScene && self.windowScene != targetWindowScene) {
+
+    BOOL isKeyboardScene = [NSStringFromClass([targetWindowScene class]) containsString:@"UIKeyboard"];
+    if (targetWindowScene && self.windowScene != targetWindowScene && !isKeyboardScene) {
         self.windowScene = targetWindowScene;
     }
 }
