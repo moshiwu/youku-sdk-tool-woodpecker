@@ -56,9 +56,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.rootViewController = [YKWRotationWindowRootViewController new];
+        YKWRotationWindowRootViewController *rootViewController = [YKWRotationWindowRootViewController new];
+        self.rootViewController = rootViewController;
         self.rootViewController.view.backgroundColor = [UIColor clearColor];
-        self.rootViewController.view.userInteractionEnabled = NO;
         
         self.backgroundColor = [UIColor whiteColor];
         self.windowLevel = UIWindowLevelStatusBar + 1;
@@ -70,7 +70,7 @@
         panGestureRecognizer.maximumNumberOfTouches = 1;
         panGestureRecognizer.minimumNumberOfTouches = 1;
         [panGestureRecognizer addTarget:self action:@selector(pan:)];
-        [self addGestureRecognizer:panGestureRecognizer];
+        [rootViewController.view addGestureRecognizer:panGestureRecognizer];
 
         _queryInterval = 0.0;
         _queryTimer = nil;
@@ -78,7 +78,7 @@
         
         _chartView = [[YKWChartView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         _chartView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        [self addSubview:_chartView];
+        [rootViewController.view addSubview:_chartView];
         
         _statusBarLabel = [[UILabel alloc] init];
         _statusBarLabel.frame = CGRectMake(20, 15, frame.size.width - 30, 15);
@@ -89,7 +89,7 @@
         _statusBarLabel.minimumScaleFactor = 0.5;
         _statusBarLabel.userInteractionEnabled = YES;
         [_statusBarLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(statusBarLabelTap)]];
-        [self addSubview:_statusBarLabel];
+        [rootViewController.view addSubview:_statusBarLabel];
 
         _pauseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _pauseBtn.frame = CGRectMake(frame.size.width - 75., -3, 50., 50.);
@@ -99,7 +99,7 @@
         [_pauseBtn setTitle:@"‖" forState:UIControlStateNormal];
         [_pauseBtn setTitle:@"▷" forState:UIControlStateSelected];
         [_pauseBtn addTarget:self action:@selector(handlePause:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_pauseBtn];
+        [rootViewController.view addSubview:_pauseBtn];
         
         _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _closeBtn.frame = CGRectMake(self.ykw_width - 45., -5, 50., 50.);
@@ -108,7 +108,17 @@
         [_closeBtn setTitle:@"×" forState:UIControlStateNormal];
         [_closeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_closeBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_closeBtn];
+        [rootViewController.view addSubview:_closeBtn];
+        
+        if (@available(iOS 13, *)) {
+            for (UIScene *scene in UIApplication.sharedApplication.connectedScenes) {
+                if ([scene isKindOfClass:[UIWindowScene class]] && scene.activationState == UISceneActivationStateForegroundActive) {
+                    [self addWindow2Scene:scene];
+                    break;
+                }
+            }
+            [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(windowSceneChanged:) name:UISceneWillConnectNotification object:nil];
+        }
     }
     return self;
 }
@@ -256,6 +266,39 @@
 - (void)setYTitle:(NSString *)yTitle {
     _yTitle = yTitle;
     _chartView.yTitle = _yTitle;
+}
+
+#pragma mark - UIScene Adaptive
+
+- (void)windowSceneChanged:(NSNotification *)note {
+    if (@available(iOS 13, *)) {
+        UIWindowScene *scene = note.object;
+        if (scene && [scene isKindOfClass:UIWindowScene.class]) {
+            [self addWindow2Scene:scene];
+        }
+    }
+}
+
+- (void)addWindow2Scene:(nullable UIWindowScene *)windowScene  API_AVAILABLE(ios(13.0)){
+    if (![windowScene isKindOfClass:[UIWindowScene class]]) {
+        return;
+    }
+    UIWindowScene *targetWindowScene = nil;
+    if (windowScene) {
+        targetWindowScene = windowScene;
+    } else {
+        for (UIWindowScene *scene in UIApplication.sharedApplication.connectedScenes) {
+            if (scene.activationState == UISceneActivationStateForegroundActive) {
+                targetWindowScene = scene;
+                break;
+            }
+        }
+    }
+
+    BOOL isKeyboardScene = [NSStringFromClass([targetWindowScene class]) containsString:@"UIKeyboard"];
+    if (targetWindowScene && self.windowScene != targetWindowScene && !isKeyboardScene) {
+        self.windowScene = targetWindowScene;
+    }
 }
 
 @end
