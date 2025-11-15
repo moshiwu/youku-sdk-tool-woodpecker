@@ -28,6 +28,7 @@
 //  SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define YKWLocalizedString(key) \
 [YKWoodpeckerUtils localizedStringForKey:(key)]

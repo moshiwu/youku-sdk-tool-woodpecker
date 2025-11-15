@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.author       = { "Zim" => "dingzm77@163.com" }
 
   spec.platform     = :ios
-  spec.platform     = :ios, "8.0"
+  spec.platform     = :ios, "15.0"
 
   spec.source       = { :git => "https://github.com/alibaba/youku-sdk-tool-woodpecker.git", :tag => "#{spec.version}" }
  

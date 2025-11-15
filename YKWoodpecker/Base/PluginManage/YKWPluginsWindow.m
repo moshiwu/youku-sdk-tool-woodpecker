@@ -149,6 +149,14 @@
 
 - (void)showWoodpecker {
     UIImage *icon = [UIImage imageNamed:@"icon_woodpecker" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+    
+    if (!icon) {
+        NSString *bundlePath = [[NSBundle bundleForClass:[self class]] bundlePath];
+        bundlePath = [bundlePath stringByAppendingPathComponent:@"YKWoodpecker_YKWoodpecker.bundle"];
+        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+        icon = [UIImage imageNamed:@"icon_woodpecker" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
     if (icon) {
         _woodpeckerIcon = [[UIImageView alloc] initWithImage:icon];
         _woodpeckerIcon.layer.anchorPoint = CGPointMake(0.5, 0.9);
@@ -176,10 +184,7 @@
     }
 }
 
-- (void)addWindow2Scene:(nullable UIWindowScene *)windowScene  API_AVAILABLE(ios(13.0)){
-    if (![windowScene isKindOfClass:[UIWindowScene class]]) {
-        return;
-    }
+- (void)addWindow2Scene:(nullable UIWindowScene *)windowScene  API_AVAILABLE(ios(13.0)) {
     UIWindowScene *targetWindowScene = nil;
     if (windowScene) {
         targetWindowScene = windowScene;
@@ -279,6 +284,10 @@
 
 - (void)show {
     self.hidden = NO;
+    
+    if (@available(iOS 13, *)) {
+        [self addWindow2Scene:nil];
+    }
 }
 
 - (void)hide {

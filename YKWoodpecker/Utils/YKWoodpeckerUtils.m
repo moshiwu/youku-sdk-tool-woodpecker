@@ -28,6 +28,7 @@
 //  SOFTWARE.
 
 #import "YKWoodpeckerUtils.h"
+@import UIKit;
 
 static NSDictionary *_cnLocalizeDic = nil;
 
@@ -86,6 +87,12 @@ static NSDictionary *_cnLocalizeDic = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSString *path = [[[NSBundle bundleForClass:[self class]] bundlePath] stringByAppendingPathComponent:@"ykwoodpecker_cn.json"];
+        
+        if (![NSFileManager.defaultManager fileExistsAtPath:path]) {
+            NSString *bundlePath = [[NSBundle bundleForClass:[self class]] bundlePath];
+            path = [bundlePath stringByAppendingPathComponent:@"YKWoodpecker_YKWoodpecker.bundle/ykwoodpecker_cn.json"];
+        }
+        
         NSData *cnData = [[NSData alloc] initWithContentsOfFile:path];
         if (cnData) {
             NSDictionary *cnDic = [NSJSONSerialization JSONObjectWithData:cnData options:0 error:nil];

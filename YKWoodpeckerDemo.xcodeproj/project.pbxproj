@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		2800D0DA21D5CA1D008BFD90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2800D0D921D5CA1D008BFD90 /* main.m */; };
 		2800D0E121D5CEA7008BFD90 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2800D0E021D5CEA7008BFD90 /* Launch Screen.storyboard */; };
 		2853408F232F671C00FB55D9 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853408E232F671C00FB55D9 /* TableViewController.m */; };
+		3DDCD0002EBC3C72006498E8 /* YKWoodpecker in Frameworks */ = {isa = PBXBuildFile; productRef = 3DDCCFFF2EBC3C72006498E8 /* YKWoodpecker */; };
+		3DDCD0322EBC43BB006498E8 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD0312EBC43BB006498E8 /* Empty.swift */; };
 		5D336D78FED656F1753663B2 /* libPods-YKWoodpeckerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DA1FDE9F9767501A19FA7D /* libPods-YKWoodpeckerDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		2800D0FB21D64B1C008BFD90 /* YKWoodpecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YKWoodpecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2853408D232F671C00FB55D9 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		2853408E232F671C00FB55D9 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		3DDCD0302EBC43BB006498E8 /* YKWoodpeckerDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YKWoodpeckerDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		3DDCD0312EBC43BB006498E8 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		8CF516241C38EDC4F97F28BC /* Pods-YKWoodpeckerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKWoodpeckerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-YKWoodpeckerDemo/Pods-YKWoodpeckerDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D336D78FED656F1753663B2 /* libPods-YKWoodpeckerDemo.a in Frameworks */,
+				3DDCD0002EBC3C72006498E8 /* YKWoodpecker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,12 +76,14 @@
 				2800D0CB21D5CA1B008BFD90 /* AppDelegate.m */,
 				2800D0CD21D5CA1B008BFD90 /* ViewController.h */,
 				2800D0CE21D5CA1B008BFD90 /* ViewController.m */,
+				3DDCD0312EBC43BB006498E8 /* Empty.swift */,
 				2853408D232F671C00FB55D9 /* TableViewController.h */,
 				2853408E232F671C00FB55D9 /* TableViewController.m */,
 				2800D0E021D5CEA7008BFD90 /* Launch Screen.storyboard */,
 				2800D0D321D5CA1D008BFD90 /* Assets.xcassets */,
 				2800D0D821D5CA1D008BFD90 /* Info.plist */,
 				2800D0D921D5CA1D008BFD90 /* main.m */,
+				3DDCD0302EBC43BB006498E8 /* YKWoodpeckerDemo-Bridging-Header.h */,
 			);
 			path = YKWoodpeckerDemo;
 			sourceTree = "<group>";
@@ -110,7 +117,6 @@
 				2800D0C321D5CA1B008BFD90 /* Sources */,
 				2800D0C421D5CA1B008BFD90 /* Frameworks */,
 				2800D0C521D5CA1B008BFD90 /* Resources */,
-				83C515EC7120BCC78AFE34F9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,6 +138,7 @@
 				TargetAttributes = {
 					2800D0C621D5CA1B008BFD90 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 2600;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -146,6 +153,9 @@
 				"zh-Hans",
 			);
 			mainGroup = 2800D0BE21D5CA1B008BFD90;
+			packageReferences = (
+				3DDCCFFE2EBC3C72006498E8 /* XCLocalSwiftPackageReference "../youku-sdk-tool-woodpecker-patch" */,
+			);
 			productRefGroup = 2800D0C821D5CA1B008BFD90 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,21 +178,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		83C515EC7120BCC78AFE34F9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YKWoodpeckerDemo/Pods-YKWoodpeckerDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		EC70EDE0062ABC2C3F41F5BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +205,7 @@
 			files = (
 				2800D0CF21D5CA1B008BFD90 /* ViewController.m in Sources */,
 				2800D0DA21D5CA1D008BFD90 /* main.m in Sources */,
+				3DDCD0322EBC43BB006498E8 /* Empty.swift in Sources */,
 				2800D0CC21D5CA1B008BFD90 /* AppDelegate.m in Sources */,
 				2853408F232F671C00FB55D9 /* TableViewController.m in Sources */,
 			);
@@ -335,13 +331,17 @@
 			baseConfigurationReference = 1960BDFD464B505D7816C07A /* Pods-YKWoodpeckerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K356S4D63Q;
+				DEVELOPMENT_TEAM = HP432528MU;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = YKWoodpeckerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
@@ -368,6 +368,9 @@
 				PODS_ROOT = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Youku.YKWoodpecker.Demozim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YKWoodpeckerDemo/YKWoodpeckerDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -377,13 +380,17 @@
 			baseConfigurationReference = 8CF516241C38EDC4F97F28BC /* Pods-YKWoodpeckerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K356S4D63Q;
+				DEVELOPMENT_TEAM = HP432528MU;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = YKWoodpeckerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
@@ -410,6 +417,8 @@
 				PODS_ROOT = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Youku.YKWoodpecker.Demozim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YKWoodpeckerDemo/YKWoodpeckerDemo-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -436,6 +445,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		3DDCCFFE2EBC3C72006498E8 /* XCLocalSwiftPackageReference "../youku-sdk-tool-woodpecker-patch" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../youku-sdk-tool-woodpecker-patch";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3DDCCFFF2EBC3C72006498E8 /* YKWoodpecker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = YKWoodpecker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2800D0BF21D5CA1B008BFD90 /* Project object */;
 }

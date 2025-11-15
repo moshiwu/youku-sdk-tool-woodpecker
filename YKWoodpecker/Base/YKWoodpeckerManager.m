@@ -163,6 +163,15 @@ NSString *const YKWPluginReceiveMessageNotification = @"YKWPluginReceiveMessageN
     } else {
         path = [bundlePath stringByAppendingPathComponent:@"woodpecker_plugin_list_en.plist"];
     }
+    
+    if (![NSFileManager.defaultManager fileExistsAtPath:path]) {
+        if ([YKWoodpeckerUtils isCnLocaleLanguage]) {
+            path = [bundlePath stringByAppendingPathComponent:@"YKWoodpecker_YKWoodpecker.bundle/woodpecker_plugin_list_cn.plist"];
+        } else {
+            path = [bundlePath stringByAppendingPathComponent:@"YKWoodpecker_YKWoodpecker.bundlewoodpecker_plugin_list_en.plist"];
+        }
+    }
+    
     NSData *data = [NSData dataWithContentsOfFile:path];
     if (!data) {
         return;

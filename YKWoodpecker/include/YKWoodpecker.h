@@ -45,10 +45,10 @@ FOUNDATION_EXPORT const unsigned char YKWoodpeckerVersionString[];
 
 #else
 
-#import "Base/YKWoodpeckerManager.h"
-#import "Plugins/CommandPlugin/CmdCore/YKWCmdCore.h"
-#import "Common/ScreenLog/YKWScreenLog.h"
-#import "Base/PluginManage/YKWPluginProtocol.h"
-#import "Base/PluginManage/YKWPluginModel.h"
+#import "YKWoodpeckerManager.h"
+#import "YKWCmdCore.h"
+#import "YKWScreenLog.h"
+#import "YKWPluginProtocol.h"
+#import "YKWPluginModel.h"
 
 #endif

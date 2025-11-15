@@ -28,10 +28,11 @@
 //  SOFTWARE.
 
 #import "ViewController.h"
-#import "YKWoodpecker.h"
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "TableViewController.h"
+#import "YKWoodpeckerDemo-Swift.h"
+@import YKWoodpecker;
 
 @interface ViewController ()<YKWCmdCoreCmdParseDelegate>
 
@@ -44,6 +45,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.title = @"Demo";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    SwiftTest *abc;
  
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"tableView" style:UIBarButtonItemStylePlain target:self action:@selector(pushTableView)];
     
